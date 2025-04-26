@@ -1,4 +1,4 @@
-use crate::components::button::Button;
+use crate::components::Button;
 use dioxus::prelude::*;
 
 #[derive(PartialEq, Props, Clone)]
