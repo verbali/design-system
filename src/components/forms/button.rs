@@ -7,6 +7,15 @@ enum ButtonSize {
     Large,
 }
 
+#[derive(PartialEq, Debug, Clone)]
+pub enum ButtonLink<T>
+where
+    T: Routable,
+{
+    Internal(T),
+    External(String),
+}
+
 #[derive(PartialEq, Props, Clone)]
 pub struct ButtonProps<T>
 where
@@ -15,7 +24,7 @@ where
     onclick: Option<EventHandler<MouseEvent>>,
     label: String,
     size: Option<ButtonSize>,
-    route: Option<T>,
+    link: Option<ButtonLink<T>>,
     r#type: Option<String>,
 }
 
@@ -37,21 +46,34 @@ where
         None => classSize = "text-base py-3 px-6".to_string(),
     }
 
-    match props.route {
-        Some(route) => {
-            rsx! {
-                Link {
-                    onclick: move |evt| {
-                        if let Some(clickable) = props.onclick {
-                            clickable.call(evt)
-                        }
-                    },
-                    class: "{class} {classSize}",
-                    to: route,
-                    "{props.label}"
+    match props.link {
+        Some(link) => match link {
+            ButtonLink::Internal(internal_route) => {
+                rsx! {
+                    Link {
+                        onclick: move |evt| {
+                            if let Some(clickable) = props.onclick {
+                                clickable.call(evt)
+                            }
+                        },
+                        class: "{class} {classSize}",
+                        to: internal_route,
+                        "{props.label}"
+                    }
                 }
             }
-        }
+            ButtonLink::External(external_link) => {
+                rsx! {
+                    a {
+                        href: external_link,
+                        class: "{class} {classSize}",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        "{props.label}"
+                    }
+                }
+            }
+        },
         None => {
             rsx! {
                 button {
