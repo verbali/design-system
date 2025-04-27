@@ -16,6 +16,15 @@ where
     External(String),
 }
 
+impl<T> From<T> for ButtonLink<T>
+where
+    T: Routable,
+{
+    fn from(route: T) -> Self {
+        ButtonLink::Internal(route)
+    }
+}
+
 #[derive(PartialEq, Props, Clone)]
 pub struct ButtonProps<T>
 where
