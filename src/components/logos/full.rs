@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 pub fn FullLogo() -> Element {
     rsx! {
         div {
-            class: "flex flex-row items-center font-bold text-xl font-fredoka",
+            class: "flex flex-row items-center font-semibold text-xl font-fredoka",
             IconLogo {
                 width: "w-8",
                 class: "mr-2",

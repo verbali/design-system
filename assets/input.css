@@ -2,19 +2,8 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-@font-face {
-    font-family: "Fredoka";
-    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Fredoka";
-    src: url("./fonts/Fredoka-SemiBold.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Fredoka");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@600");
 
 .font-fredoka {
     font-family: "Fredoka", sans-serif;
