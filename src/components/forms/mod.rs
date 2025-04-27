@@ -4,4 +4,4 @@ mod panel;
 pub use panel::Panel;
 
 mod button;
-pub use button::Button;
+pub use button::{Button, ButtonLink, ButtonSize};

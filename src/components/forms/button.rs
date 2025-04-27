@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[derive(PartialEq, Debug, Clone)]
-enum ButtonSize {
+pub enum ButtonSize {
     Small,
     Medium,
     Large,
@@ -14,15 +14,6 @@ where
 {
     Internal(T),
     External(String),
-}
-
-impl<T> From<T> for ButtonLink<T>
-where
-    T: Routable,
-{
-    fn from(route: T) -> Self {
-        ButtonLink::Internal(route)
-    }
 }
 
 #[derive(PartialEq, Props, Clone)]
