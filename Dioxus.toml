@@ -6,7 +6,7 @@ title = "Verbali"
 
 [web.watcher]
 reload_html = true
-watch_path = ["src", "assets", "public"]
+watch_path = ["src", "assets"]
 
 [web.resource]
 style = []
