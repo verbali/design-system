@@ -1,8 +1,24 @@
 use dioxus::prelude::*;
+use std::fmt::{Display, Formatter};
+
+#[derive(PartialEq, Clone)]
+pub enum ItemCardIcon {
+    Asset(Asset),
+    Element(Element),
+}
+
+impl Display for ItemCardIcon {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ItemCardIcon::Asset(asset) => write!(f, "{}", asset),
+            ItemCardIcon::Element(_) => write!(f, "element"),
+        }
+    }
+}
 
 #[derive(PartialEq, Props, Clone)]
 pub struct ItemCardProps {
-    icon: Asset,
+    icon: ItemCardIcon,
     title: String,
     content: String,
 }
@@ -14,10 +30,17 @@ pub fn ItemCard(props: ItemCardProps) -> Element {
             class: "sm:flex sm:flex-row sm:items-center my-16",
 
             div {
-                img {
-                    class: "w-16 h-16 mx-auto sm:mx-8",
-                    src: "{props.icon}",
-                    alt: "{props.title} icon"
+                match props.icon {
+                    ItemCardIcon::Asset(asset) => {
+                        rsx!(img {
+                            class: "w-16 h-16 mx-auto sm:mx-8",
+                            src: "{asset}",
+                            alt: "{props.title} icon"
+                        })
+                    },
+                    ItemCardIcon::Element(element) => {
+                        element
+                    },
                 }
             }
 

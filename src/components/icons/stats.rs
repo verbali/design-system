@@ -4,15 +4,18 @@ use dioxus::prelude::*;
 pub struct StatsIconProps {
     size: Option<String>,
     color: Option<String>,
+    class: Option<String>,
 }
 
 #[component]
 pub fn StatsIcon(props: StatsIconProps) -> Element {
     let size = props.size.unwrap_or("36px".to_string());
     let color = props.color.unwrap_or("currentColor".to_string());
+    let classes = props.class.unwrap_or_default();
 
     rsx! {
         svg {
+            class: classes,
             view_box: "-3 0 32 32",
             width: "{size}",
             height: "{size}",
