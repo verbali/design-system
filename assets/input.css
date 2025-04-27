@@ -25,3 +25,13 @@ body {
         color: #fff;
     }
 }
+
+.link-active {
+    background: var(--color-blue-500);
+    color: var(--color-blue-800) !important;
+
+    @variant dark {
+        background: var(--color-blue-800);
+        color: var(--color-blue-500) !important;
+    }
+}
