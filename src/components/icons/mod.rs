@@ -18,3 +18,15 @@ pub use account::AccountIcon;
 
 mod form;
 pub use form::FormIcon;
+
+mod check;
+pub use check::CheckIcon;
+
+mod clipboard;
+pub use clipboard::ClipboardIcon;
+
+mod link;
+pub use link::LinkIcon;
+
+mod stats;
+pub use stats::StatsIcon;
