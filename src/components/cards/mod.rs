@@ -3,3 +3,6 @@ pub use item_card::{ItemCard, ItemCardIcon};
 
 mod pricing_card;
 pub use pricing_card::PricingCard;
+
+mod panel;
+pub use panel::Panel;
