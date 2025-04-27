@@ -1,4 +1,3 @@
-use crate::Route;
 use dioxus::prelude::*;
 
 #[derive(PartialEq, Debug, Clone)]
@@ -9,16 +8,22 @@ enum ButtonSize {
 }
 
 #[derive(PartialEq, Props, Clone)]
-pub struct ButtonProps {
+pub struct ButtonProps<T>
+where
+    T: Routable + PartialEq,
+{
     onclick: Option<EventHandler<MouseEvent>>,
     label: String,
     size: Option<ButtonSize>,
-    route: Option<Route>,
+    route: Option<T>,
     r#type: Option<String>,
 }
 
 #[component]
-pub fn Button(props: ButtonProps) -> Element {
+pub fn Button<T>(props: ButtonProps<T>) -> Element
+where
+    T: Routable + PartialEq,
+{
     let class =
         "inline-block bg-blue-700 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 font-bold text-white font-fredoka rounded-lg cursor-pointer";
     let classSize: String;
