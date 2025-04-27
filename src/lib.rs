@@ -7,7 +7,7 @@ pub mod assets {
 
     pub mod fonts {
         use dioxus::prelude::*;
-        pub const FONT_REGULAR: Asset = asset!("/assets/fonts/Fredoka-Regular.ttf");
-        pub const FONT_BOLD: Asset = asset!("/assets/fonts/Fredoka-SemiBold.ttf");
+        pub const REGULAR: Asset = asset!("/assets/fonts/Fredoka-Regular.ttf");
+        pub const BOLD: Asset = asset!("/assets/fonts/Fredoka-SemiBold.ttf");
     }
 }
