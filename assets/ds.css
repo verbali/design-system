@@ -439,6 +439,14 @@ body {
     color: #fff;
   }
 }
+.link-active {
+  background: var(--color-blue-500);
+  color: var(--color-blue-800) !important;
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    background: var(--color-blue-800);
+    color: var(--color-blue-500) !important;
+  }
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
