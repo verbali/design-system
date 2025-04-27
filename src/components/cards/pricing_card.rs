@@ -47,8 +47,12 @@ where
                 }
             }
 
-            Button<T> {
-                label: "Sélectionner",
+            div {
+                class: "text-center",
+
+                Button<T> {
+                    label: "Sélectionner",
+                }
             }
         }
     }
