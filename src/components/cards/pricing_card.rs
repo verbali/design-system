@@ -9,7 +9,10 @@ pub struct PricingCardProps {
 }
 
 #[component]
-pub fn PricingCard(props: PricingCardProps) -> Element {
+pub fn PricingCard<T>(props: PricingCardProps) -> Element
+where
+    T: Routable + PartialEq,
+{
     rsx! {
         div {
             class: "flex-1 border border-gray-300 dark:border-gray-800 rounded-lg p-8 m-4 h-fit",
@@ -44,7 +47,7 @@ pub fn PricingCard(props: PricingCardProps) -> Element {
                 }
             }
 
-            Button {
+            Button<T> {
                 label: "Sélectionner",
             }
         }
