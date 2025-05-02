@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[derive(PartialEq, Props, Clone)]
-pub struct PanelProps {
+pub struct SwitchPanelProps {
     show: Option<bool>,
     hidden_classes: Option<String>,
     hidden_content: Element,
@@ -10,7 +10,7 @@ pub struct PanelProps {
 }
 
 #[component]
-pub fn Panel(props: PanelProps) -> Element {
+pub fn SwitchPanel(props: SwitchPanelProps) -> Element {
     let show = props.show.unwrap_or(false);
 
     if show {
