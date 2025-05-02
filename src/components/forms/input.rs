@@ -3,6 +3,7 @@ use dioxus::prelude::*;
 #[derive(PartialEq, Props, Clone)]
 pub struct InputProps {
     class: Option<String>,
+    name: Option<String>,
     label: String,
     r#type: Option<String>,
     placeholder: Option<String>,
@@ -11,7 +12,6 @@ pub struct InputProps {
 
 #[component]
 pub fn Input(props: InputProps) -> Element {
-    let r#type = props.r#type.unwrap_or("text".to_string());
     let mut label = props.label;
 
     if let Some(_) = props.required {
@@ -28,7 +28,8 @@ pub fn Input(props: InputProps) -> Element {
             }
             input {
                 class: "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none",
-                type: r#type,
+                name: props.name.unwrap_or("".to_string()),
+                type: props.r#type.unwrap_or("text".to_string()),
                 required: match props.required {
                     Some(r) => r,
                     None => false,
